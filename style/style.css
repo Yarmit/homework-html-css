@@ -1,0 +1,353 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Lato", sans-serif;
+    font-size: 14px;
+    line-height: 17px;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.container {
+    width: 1140px;
+    margin: 0 auto;
+    /*outline: 1px solid red; /*рамка для отладки*/
+}
+
+.header {
+    background-color: #222222;
+    padding: 18px 0;
+}
+
+.header-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    line-height: 0; /*убираем лишний отступ внизу изображения*/
+}
+
+.header-left {
+    display: flex;
+    align-items: flex-end;
+    gap: 41px; /*расстояние между flex*/
+}
+
+.button-search,
+.button-menu {
+    background-color: transparent;
+    border: none;
+}
+
+.header-raight {
+    display: flex;
+    align-items: flex-end;
+    gap: 33px;
+}
+
+.header-link {
+    text-decoration: transparent;
+    color: #ffffff;
+}
+
+.promo {
+    background-color: #f1e4e6;
+    min-height: 764px;
+}
+
+.promo-wrapper {
+    background-image: url(../img/promo.png);
+    background-repeat: no-repeat;
+    min-height: inherit;
+    background-position-x: -226px;
+    background-position-y: bottom;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+.promo-title {
+    font-weight: 900;
+    font-size: 48px;
+    line-height: 38px;
+    color: #222222;
+    border-left: 12px solid #f16d7f;
+    padding-left: 16px;
+    margin-right: 100px;
+}
+
+.promo-title-small {
+    font-weight: 700;
+    font-size: 32px;
+    line-height: 38px;
+}
+
+.promo-title-pink {
+    color: #f16d7f;
+}
+
+/* CATEGORIES */
+
+.categories {
+    padding-top: 65px;
+    padding-bottom: 96px;
+}
+
+.categories-wrapper,
+.product-wrapper {
+    display: flex;
+    flex-wrap: wrap; /*перенос на другую строку*/
+    justify-content: space-between;
+    gap: 30px;
+}
+
+.categories-item {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    background: #c4c4c4;
+    width: 360px;
+    height: 260px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    /* align-items: center; */
+    justify-content: center;
+}
+
+.categories-item-women {
+    background-image: url(../img/cat-women.jpg);
+}
+
+.categories-item-men {
+    background-image: url(../img/cat-men.jpg);
+}
+
+.categories-item-kids {
+    background-image: url(../img/cat-kids.jpg);
+}
+
+.categories-item-acces {
+    background-image: url(../img/cat-acces.jpg);
+    width: 100%;
+    height: 180px;
+}
+
+.categories-text-sale {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #ffffff;
+}
+
+.categories-text-name {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 29px;
+    color: #f16d7f;
+}
+
+/* PRODUCT */
+
+.product {
+    flex-grow: 1; /*прижимаем подвал к низу*/
+    margin-bottom: 95px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.product-card {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    width: 360px;
+    background-color: #f8f8f8;
+    display: flex;
+    flex-direction: column;
+}
+
+.product-card-description {
+    margin: 24px 29px 20px 16px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.product-title {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 36px;
+    color: #222222;
+}
+
+.product-text {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #9f9f9f;
+    margin-bottom: 48px;
+}
+
+.product-card-title {
+    font-weight: 700;
+    font-size: 13px;
+    line-height: 16px;
+    color: #000000;
+}
+
+.product-card-text {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #5d5d5d;
+    padding-top: 13px;
+    padding-bottom: 18px;
+}
+
+.product-card-price {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #f16d7f;
+    margin-top: auto;
+}
+
+.product-link {
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #f26376;
+    border: 1px solid #ff6a6a;
+    padding: 15px 39px;
+    margin-top: 48px;
+}
+
+/* SERVIS */
+
+.service {
+    background-color: #222224;
+    padding: 104px 0;
+    color: #fff;
+}
+
+.service-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.service-card {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    width: 360px;
+    text-align: center;
+    align-items: center;
+}
+
+.service-card img {
+    height: 35px;
+}
+
+.service-card-title {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #fbfbfb;
+    padding-top: 19px;
+}
+
+.service-card-text {
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #fbfbfb;
+    padding-top: 16px;
+}
+
+.subscription {
+    background-image: url(../img/subscribe.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 448px;
+}
+
+.subscription-wrapper {
+    display: flex;
+    justify-content: space-between;
+}
+
+.avatar-box {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    width: 360px;
+    height: 448px;
+    text-align: center;
+    padding-top: 87px;
+}
+
+.avatar-text {
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    color: #222224;
+    margin-top: 30px;
+}
+
+.avatar-text span {
+    font-style: italic;
+}
+
+.subscription-box {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    width: 557px;
+    text-align: center;
+    padding-top: 150px;
+}
+
+.subscription-box-title {
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 30px;
+    color: #222224;
+}
+
+.subscription-box-text {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    color: #222224;
+    margin-bottom: 30px;
+}
+
+.footer {
+    background-color: #222224;
+    padding-top: 24px;
+    padding-bottom: 23px;
+    color: #fbfbfb;
+}
+
+.footer-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.network-box {
+    display: flex;
+}
+
+.footer-text {
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 19px;
+    color: #fbfbfb;
+}
+
+.rectangle {
+    width: 32px;
+    height: 32px;
+    background-color: #ffffff;
+    margin-left: 7px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
