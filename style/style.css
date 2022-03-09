@@ -484,7 +484,7 @@ body {
     color: #fbfbfb;
 }
 
-.rectangle {
+.network-link {
     width: 32px;
     height: 32px;
     background-color: #ffffff;
@@ -492,4 +492,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.network-link:hover {
+    background-color: #f16d7f;
 }
