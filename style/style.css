@@ -5,18 +5,26 @@
 }
 
 body {
-    font-family: "Lato", sans-serif;
-    font-size: 14px;
-    line-height: 17px;
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    font-family: "Lato", sans-serif;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
 }
 
 .container {
+    /*outline: 1px solid red; /*рамка для отладки*/
     width: 1140px;
     margin: 0 auto;
-    /*outline: 1px solid red; /*рамка для отладки*/
+}
+
+.hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    clip: rect(0, 0, 0, 0);
 }
 
 .header {
@@ -90,6 +98,103 @@ body {
     color: #f16d7f;
 }
 
+/* HEADING */
+
+.heading {
+    background-color: #f8f3f4;
+}
+
+.heading-wrapper {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    min-height: 148px;
+}
+
+.heading-title {
+    font-weight: normal;
+    font-size: 24px;
+    line-height: 29px;
+    color: #f16d7f;
+}
+
+.breadcrumbs-list,
+.sorting-list {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+}
+
+.breadcrumbs-item::before {
+    content: "/";
+    margin-right: 10px;
+}
+
+.breadcrumbs-item:first-child::before {
+    display: none;
+}
+
+.breadcrumbs-link {
+    text-decoration: none;
+    text-transform: uppercase;
+    font-weight: 300;
+    font-size: 14px;
+    line-height: 17px;
+    color: #636363;
+    transition: 0.2s;
+}
+
+.breadcrumbs-link--current {
+    font-weight: bold;
+    color: #f16d7f;
+}
+
+.breadcrumbs-link[href]:hover {
+    text-decoration: underline;
+    color: #f16d7f;
+}
+
+.sorting-wrapper {
+    margin-top: 51px;
+    margin-bottom: 64px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.sorting-column {
+    width: 360px;
+}
+
+.sorting-text {
+    padding-left: 15px;
+    padding-right: 11px;
+    float: left;
+    font-weight: 600;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+}
+
+.sorting-list li {
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #6f6e6e;
+}
+
+.sorting-item::after {
+    content: url(../img/down-arrow.png);
+    margin-left: 10px;
+}
+
+/* CONTENT */
+
+.content {
+    /*outline: 1px solid green; /*рамка для отладки*/
+    flex-grow: 1; /*прижимаем подвал к низу*/
+    margin-bottom: 95px;
+}
+
 /* CATEGORIES */
 
 .categories {
@@ -152,8 +257,6 @@ body {
 /* PRODUCT */
 
 .product {
-    flex-grow: 1; /*прижимаем подвал к низу*/
-    margin-bottom: 95px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -224,6 +327,14 @@ body {
     margin-top: 48px;
 }
 
+.product-link:hover {
+    background-color: #f263762c;
+}
+
+.pagination {
+    margin-top: 48px;
+}
+
 /* SERVIS */
 
 .service {
@@ -264,19 +375,21 @@ body {
     padding-top: 16px;
 }
 
-.subscription {
+/* feedback */
+
+.feedback {
     background-image: url(../img/subscribe.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     min-height: 448px;
 }
 
-.subscription-wrapper {
+.feedback-wrapper {
     display: flex;
     justify-content: space-between;
 }
 
-.avatar-box {
+.reviews {
     /*outline: 1px solid green; /*рамка для отладки*/
     width: 360px;
     height: 448px;
@@ -284,7 +397,7 @@ body {
     padding-top: 87px;
 }
 
-.avatar-text {
+.reviews-text {
     font-weight: 400;
     font-size: 20px;
     line-height: 24px;
@@ -292,30 +405,59 @@ body {
     margin-top: 30px;
 }
 
-.avatar-text span {
+.reviews-text span {
     font-style: italic;
 }
 
-.subscription-box {
+.subscription {
     /*outline: 1px solid green; /*рамка для отладки*/
     width: 557px;
     text-align: center;
     padding-top: 150px;
 }
 
-.subscription-box-title {
+.subscription-title {
     font-weight: 700;
     font-size: 24px;
     line-height: 30px;
     color: #222224;
+    margin-bottom: 30px;
 }
 
-.subscription-box-text {
+.subscription-text {
     font-weight: 400;
     font-size: 18px;
-    line-height: 30px;
+}
+
+.subscribe-form {
+    display: flex;
+    justify-content: center;
+}
+
+.subscribe-form-field {
+    /* width: 256px; */
+    border: none;
+    background-color: #e1e1e1;
+    padding-left: 22px;
+    padding-right: 64px;
+    border-radius: 2em 0 0 2em;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
     color: #222224;
-    margin-bottom: 30px;
+    opacity: 0.67;
+}
+
+.subscribe-form-button {
+    /* width: 100px; */
+    border: none;
+    background-color: #f16d7f;
+    padding: 16px 19px;
+    border-radius: 0 2em 2em 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #ffffff;
 }
 
 .footer {
