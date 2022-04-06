@@ -1,0 +1,57 @@
+.header {
+    background-color: $colorBgMain;
+    padding: 18px 0;
+
+    &-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+        line-height: 0;
+    }
+
+    &-left {
+        display: flex;
+        align-items: flex-end;
+        gap: 41px;
+    }
+
+    &-raight {
+        display: flex;
+        align-items: flex-end;
+        gap: 33px;
+        margin-right: 10px;
+    }
+
+    &-button {
+        background-color: transparent;
+        border: none;
+        fill: #e8e8e8;
+    }
+
+    &-link {
+        position: relative;
+        /* text-decoration: transparent; */
+        text-decoration: none;
+        fill: #e8e8e8;
+    }
+
+    &-button:hover,
+    &-link:hover {
+        fill: $colorMain;
+    }
+}
+
+.basket-number {
+    position: absolute;
+    top: -10px;
+    right: -10px;
+    width: 19px;
+    height: 19px;
+    font-size: 12px;
+    color: #ffffff;
+    background-color: $colorMain;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
