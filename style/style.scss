@@ -1,10 +1,10 @@
-/* Цветовая гамма розового цвета
-		#f16d7f - основной цвет		
-		цвета получены математически от основного:
-		#ff6a6a - цвет рамки 
-		#f26376 - цвет надписи кнопки
-		#ef5b70 - прочие элементы
-*/
+// Цветовая гамма розового цвета
+// #f16d7f - основной цвет
+// цвета получены математически от основного:
+// #ff6a6a - цвет рамки
+// #f26376 - цвет надписи кнопки
+// #ef5b70 - прочие элементы
+
 $desktopWidht: 1140px;
 $font: "Lato", sans-serif;
 $fontSize: 14px;
@@ -13,13 +13,17 @@ $colorMain: #f16d7f;
 $colorBgMain: #222222;
 $colorBgPromo: #f1e4e6;
 $colorBgHeading: #f8f3f4;
+$timeAnimLogoBounce: 1.7s; // время анимации подпрыгивание
+$timeAnimLogoPulsing: 1.8s; // время анимации пульсирование
+$cycleAnimLogoPulsing: 1; // цикл анимации пульсирование
+$timeTransLink: 0.4s; // время трансформации ссылок и кнопок
+$timeTransNetwork: 0.5s; // время трансфопмации иконок соцсети
 
 @mixin fontstyle($weight, $size, $height) {
     font-weight: $weight;
     font-size: $size;
     line-height: $height;
 }
-
 * {
     margin: 0;
     padding: 0;
@@ -63,6 +67,7 @@ body {
     &-wrapper {
         background-image: url(../img/promo.png);
         background-repeat: no-repeat;
+        background-size: contain;
         min-height: inherit;
         background-position-x: -226px;
         background-position-y: bottom;
@@ -125,10 +130,8 @@ body {
         text-decoration: none;
         text-transform: uppercase;
         font-weight: 300;
-        // font-size: 14px;
-        // line-height: 17px;
         color: #636363;
-        transition: 0.2s;
+        transition: $timeTransLink;
 
         &--current {
             font-weight: bold;
@@ -154,38 +157,141 @@ body {
         width: 360px;
     }
 
-    &-filter-link {
-        text-decoration: none;
-        padding-left: 15px;
-        font-weight: 600;
-        color: #000000;
-        fill: #000000;
+    & svg {
+        margin-left: 11px;
+    }
 
-        & svg {
-            margin-left: 11px;
-        }
-
-        &:hover {
-            color: ($colorMain - #02120f);
-            fill: ($colorMain - #02120f);
-        }
+    &-name::-webkit-details-marker {
+        display: none;
     }
 
     &-list {
-        list-style: none;
         display: flex;
-        gap: 20px;
+        gap: 28px;
     }
 
-    &-link {
-        text-decoration: none;
+    &-name {
         font-weight: 400;
         color: #6f6e6e;
+        fill: #6f6e6e;
+        display: inline-block;
+        cursor: pointer;
+    }
 
-        &::after {
-            content: url(../img/down-arrow.png);
-            margin-left: 10px;
+    &-name::-webkit-details-marker {
+        display: none;
+    }
+
+    &-name svg {
+        margin-left: 10px;
+    }
+
+    &-item[open] &-name {
+        color: ($colorMain - #02120f);
+        fill: ($colorMain - #02120f);
+    }
+
+    &-overlay {
+        position: absolute;
+        z-index: 2;
+        @include fontstyle(400, 14px, 16px);
+        color: #6f6e6e;
+        background-color: #fff;
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+        width: 79px;
+        height: 103px;
+        padding-top: 7px;
+        padding-left: 9px;
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+    }
+}
+
+.filter {
+    position: relative;
+    width: 360px;
+
+    &[open] {
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+    }
+
+    &[open] .filter-title {
+        color: #f16d7e;
+        fill: #f16d7e;
+    }
+
+    &-title {
+        position: relative;
+        z-index: 2;
+        font-weight: 600;
+        color: #000000;
+        fill: #000000;
+        background-color: #fff;
+        padding: 13px 16px 0 16px;
+        display: block;
+        cursor: pointer;
+        transition: $timeTransLink;
+    }
+
+    &-overlay {
+        position: absolute;
+        z-index: 1;
+        background-color: #fff;
+        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
+        width: 100%;
+        padding: 17px;
+    }
+
+    &-item:nth-last-child(n + 2) {
+        margin-bottom: 16px;
+    }
+
+    &-item[open] .filter-name {
+        color: #f16d7e;
+    }
+
+    &-name {
+        // font-weight: 400;
+        display: block;
+        padding: 8px 11px 11px 11px;
+        border-left: 5px solid #f16d7e;
+        border-bottom: 1px solid #ebebeb;
+        color: #6f6e6e;
+        text-transform: uppercase;
+        cursor: pointer;
+        transition: $timeTransLink;
+    }
+
+    &-title::-webkit-details-marker {
+        display: none;
+    }
+
+    &-list {
+        list-style-type: none;
+        padding: 24px 18px 0px 18px;
+    }
+
+    &-button {
+        font-family: "Lato";
+        @include fontstyle(400, 14px, 17px);
+        color: #6f6e6e;
+        border: none;
+        background-color: transparent;
+        // padding-bottom: 11px;
+        transition: $timeTransLink;
+
+        &:hover {
+            color: $colorMain;
         }
+    }
+
+    &-list li:nth-last-child(n + 2) {
+        padding-bottom: 11px;
+    }
+
+    &-list li:nth-last-child(1) {
+        padding-bottom: 8px;
     }
 }
 
@@ -203,6 +309,7 @@ body {
         height: 47px;
         border: none;
         font-size: 22px;
+        transition: $timeTransLink;
 
         &:hover {
             color: $colorMain;
@@ -213,6 +320,8 @@ body {
 /* order */
 .order {
     &-wrapper {
+        position: relative;
+        z-index: 0;
         border: 1px solid #eaeaea;
         background-color: #ffffff;
         /* min-height: 601px; */
@@ -224,26 +333,30 @@ body {
         padding-bottom: 64px;
     }
 
-    &-line-1 {
-        width: 63px;
-        height: 3px;
-        outline: 1px solid ($colorMain + #010000 - #000a09);
-        background-color: ($colorMain + #010000 - #000a09);
-        margin: 12px 0;
-    }
-
-    &-line-2 {
+    &-content {
         width: 641px;
-        height: 1px;
-        outline: 0.5px solid #eaeaea;
-        background-color: #eaeaea;
-        margin: 65px 0;
+        // text-align: center;
+        border-bottom: 1px solid #eaeaea;
+        padding-bottom: 65px;
+        margin-bottom: 65px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
     }
 
     &-title {
         @include fontstyle(300, 14px, 17px);
         color: $colorMain;
         padding-top: 65px;
+    }
+
+    &-title::after {
+        content: "";
+        background-image: url(../img/rectangle_1.jpg);
+        background-repeat: no-repeat;
+        background-position: center;
+        display: block;
+        padding-top: 27px;
     }
 
     &-title-1 {
@@ -253,11 +366,11 @@ body {
 
     &-text {
         width: 555px;
-        margin: 0 auto;
+        // margin: 0 auto;
+        padding-top: 52px;
         font-weight: 300;
         text-align: center;
         color: #5e5e5e;
-        padding-top: 52px;
     }
 
     &-price {
@@ -267,18 +380,50 @@ body {
     }
 
     &-link {
+        position: relative;
+    }
+
+    &-link--1 {
         text-decoration: none;
+        @include fontstyle(400, 16px, 19px);
+        fill: ($colorMain + #010000 - #000a09);
+        color: ($colorMain + #010000 - #000a09);
         border: 1px solid ($colorMain + #0e0000 - #000315);
         padding: 13px 55px 9px 24px;
-        fill: ($colorMain + #010000 - #000a09);
         margin-top: 48px;
+
         display: flex;
         align-items: center;
         gap: 23px;
 
+        overflow: hidden;
+        transition: 0.6s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $colorMain;
+            opacity: 0;
+
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.6s, opacity 0.6s;
+        }
+
+        &:hover:after {
+            transform: scaleX(1);
+            opacity: 1;
+        }
+
         &:hover {
-            background-color: $colorMain;
+            // background: $colorMain;
             fill: #ffffff;
+            color: #ffffff;
         }
     }
 }
@@ -304,6 +449,8 @@ body {
         flex-direction: column;
         /* align-items: center; */
         justify-content: center;
+        background-repeat: no-repeat;
+        background-size: cover;
 
         &-women {
             background-image: url(../img/cat-women.jpg);
@@ -361,15 +508,43 @@ body {
     }
 
     &-link {
+        position: relative;
+    }
+
+    &-link--1 {
         text-decoration: none;
         @include fontstyle(400, 16px, 19px);
         color: ($colorMain + #010000 - #000a09);
         border: 1px solid ($colorMain + #0e0000 - #000315);
         padding: 15px 39px;
         margin-top: 48px;
+        overflow: hidden;
+        transition: color 0.7s;
+
+        &::after {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            width: 100%;
+            height: 100%;
+            top: 0;
+            left: 0;
+            background: $colorMain;
+            opacity: 0;
+
+            transform: scaleX(0);
+            transform-origin: center;
+            transition: transform 0.7s, opacity 0.7s;
+        }
+
+        &:hover:after {
+            // background-color: $colorMain;
+            // color: #ffffff;
+            transform: scaleX(1);
+            opacity: 1;
+        }
 
         &:hover {
-            background-color: $colorMain;
             color: #ffffff;
         }
     }
@@ -384,6 +559,49 @@ body {
     background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
+    position: relative;
+
+    &-overlay {
+        position: absolute;
+        background: rgba(58, 56, 56, 0.86);
+        width: 100%;
+        height: 420px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        // display: none;
+        opacity: 0;
+        transition: opacity 0.4s ease-out 0s;
+    }
+
+    &:hover &-overlay {
+        // display: flex;
+        opacity: 1;
+        transition: opacity 0.8s ease-out 0.2s;
+    }
+
+    &-btn {
+        position: absolute; // для карточки с видео
+        z-index: 1; // для карточки с видео
+        background-color: transparent;
+        border: 1px solid #fff;
+        font-family: "Lato", sans-serif;
+        @include fontstyle(400, 14px, 17px);
+        fill: #fff;
+        color: #fff;
+        padding: 10px 15px 7px 13px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 11px;
+        transition: $timeTransLink;
+
+        &:hover {
+            border: 1px solid $colorMain;
+            fill: $colorMain;
+            color: $colorMain;
+        }
+    }
 
     &-video {
         height: 420px;
@@ -403,6 +621,7 @@ body {
     &-link {
         text-decoration: none;
         color: #000000;
+        transition: color 0.4s;
 
         &:hover {
             color: $colorMain;
@@ -455,10 +674,17 @@ body {
     &-link {
         text-decoration: none;
         color: inherit;
+        transition: $timeTransLink;
+    }
+    &-link--arrow:hover {
+        color: ($colorMain - #02120f);
     }
 
     &-link--active {
         color: ($colorMain - #02120f);
+    }
+    &-link--hov:hover {
+        color: #000;
     }
 }
 
@@ -470,3 +696,87 @@ body {
 
 /* footer */
 @import "blocks/footer";
+
+/* table 768 */
+@media (max-width: 800px) {
+    .container {
+        width: 768px;
+        margin: 0 auto;
+        padding-left: 16px;
+        padding-right: 16px;
+    }
+
+    .main-nav {
+        display: none;
+    }
+
+    .promo {
+        min-height: 368px;
+
+        &-wrapper {
+            background-position-x: 0;
+            // background-size: contain;
+        }
+
+        &-title {
+            @include fontstyle(900, 44px, 29px);
+            margin-right: 18px;
+        }
+
+        &-title-small {
+            @include fontstyle(700, 24px, 29px);
+        }
+    }
+
+    .categories {
+        &-wrapper {
+            gap: 20px;
+        }
+
+        &-item {
+            width: 232px;
+            height: 168px;
+
+            &-acces {
+                width: 100%;
+                height: 116px;
+            }
+        }
+    }
+
+    .product {
+        &-wrapper {
+            gap: 16px;
+        }
+    }
+
+    .service {
+        padding: 48px 0 64px 0;
+
+        &-wrapper {
+            flex-direction: column;
+            align-items: center;
+            gap: 48px;
+        }
+    }
+
+    .feedback {
+        background-size: 100% 100%;
+        min-height: 629px;
+
+        &-wrapper {
+            flex-direction: column;
+            align-items: center;
+            // gap: 48px;
+        }
+    }
+
+    .reviews {
+        margin-top: 64px;
+        height: 225px;
+    }
+
+    .subscription {
+        margin-top: 48px;
+    }
+}
