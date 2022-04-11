@@ -69,9 +69,11 @@
         border-radius: 0 2em 2em 0;
         @include fontstyle(400, 14px, 17px);
         color: #ffffff;
+        transition: $timeTransLink;
 
         &:hover {
             background-color: $colorMain - #111111;
+            box-shadow: 5px 0px 12px $colorMain - #111111;
         }
     }
 }
