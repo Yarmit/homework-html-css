@@ -12,9 +12,9 @@
 
 .reviews {
     width: 360px;
-    height: 448px;
+    // height: 448px;
     text-align: center;
-    padding-top: 87px;
+    margin-top: 87px;
 
     &-text {
         @include fontstyle(400, 20px, 24px);
@@ -30,7 +30,7 @@
 .subscription {
     width: 557px;
     text-align: center;
-    padding-top: 150px;
+    margin-top: 150px;
 
     &-title {
         @include fontstyle(700, 24px, 30px);
