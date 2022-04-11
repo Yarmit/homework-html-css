@@ -13,11 +13,6 @@ $colorMain: #f16d7f;
 $colorBgMain: #222222;
 $colorBgPromo: #f1e4e6;
 $colorBgHeading: #f8f3f4;
-$timeAnimLogoBounce: 1.7s; // время анимации подпрыгивание
-$timeAnimLogoPulsing: 1.8s; // время анимации пульсирование
-$cycleAnimLogoPulsing: 1; // цикл анимации пульсирование
-$timeTransLink: 0.4s; // время трансформации ссылок и кнопок
-$timeTransNetwork: 0.5s; // время трансфопмации иконок соцсети
 
 @mixin fontstyle($weight, $size, $height) {
     font-weight: $weight;
@@ -130,8 +125,10 @@ body {
         text-decoration: none;
         text-transform: uppercase;
         font-weight: 300;
+        // font-size: 14px;
+        // line-height: 17px;
         color: #636363;
-        transition: $timeTransLink;
+        transition: 0.2s;
 
         &--current {
             font-weight: bold;
@@ -163,7 +160,6 @@ body {
         font-weight: 600;
         color: #000000;
         fill: #000000;
-        transition: $timeTransLink;
 
         & svg {
             margin-left: 11px;
@@ -176,45 +172,20 @@ body {
     }
 
     &-list {
+        list-style: none;
         display: flex;
-        gap: 28px;
+        gap: 20px;
     }
 
-    &-name {
+    &-link {
+        text-decoration: none;
         font-weight: 400;
         color: #6f6e6e;
-        fill: #6f6e6e;
-        display: inline-block;
-        cursor: pointer;
-    }
 
-    &-name::-webkit-details-marker {
-        display: none;
-    }
-
-    &-name svg {
-        margin-left: 10px;
-    }
-
-    &-item[open] &-name {
-        color: ($colorMain - #02120f);
-        fill: ($colorMain - #02120f);
-    }
-
-    &-overlay {
-        position: absolute;
-        z-index: 2;
-        @include fontstyle(400, 14px, 16px);
-        color: #6f6e6e;
-        background-color: #fff;
-        box-shadow: 6px 4px 35px rgba(0, 0, 0, 0.21);
-        width: 79px;
-        height: 103px;
-        padding-top: 7px;
-        padding-left: 9px;
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
+        &::after {
+            content: url(../img/down-arrow.png);
+            margin-left: 10px;
+        }
     }
 }
 
@@ -232,7 +203,6 @@ body {
         height: 47px;
         border: none;
         font-size: 22px;
-        transition: $timeTransLink;
 
         &:hover {
             color: $colorMain;
@@ -243,8 +213,6 @@ body {
 /* order */
 .order {
     &-wrapper {
-        position: relative;
-        z-index: 0;
         border: 1px solid #eaeaea;
         background-color: #ffffff;
         /* min-height: 601px; */
@@ -256,30 +224,26 @@ body {
         padding-bottom: 64px;
     }
 
-    &-content {
+    &-line-1 {
+        width: 63px;
+        height: 3px;
+        outline: 1px solid ($colorMain + #010000 - #000a09);
+        background-color: ($colorMain + #010000 - #000a09);
+        margin: 12px 0;
+    }
+
+    &-line-2 {
         width: 641px;
-        // text-align: center;
-        border-bottom: 1px solid #eaeaea;
-        padding-bottom: 65px;
-        margin-bottom: 65px;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        height: 1px;
+        outline: 0.5px solid #eaeaea;
+        background-color: #eaeaea;
+        margin: 65px 0;
     }
 
     &-title {
         @include fontstyle(300, 14px, 17px);
         color: $colorMain;
         padding-top: 65px;
-    }
-
-    &-title::after {
-        content: "";
-        background-image: url(../img/rectangle_1.jpg);
-        background-repeat: no-repeat;
-        background-position: center;
-        display: block;
-        padding-top: 27px;
     }
 
     &-title-1 {
@@ -289,11 +253,11 @@ body {
 
     &-text {
         width: 555px;
-        // margin: 0 auto;
-        padding-top: 52px;
+        margin: 0 auto;
         font-weight: 300;
         text-align: center;
         color: #5e5e5e;
+        padding-top: 52px;
     }
 
     &-price {
@@ -303,63 +267,19 @@ body {
     }
 
     &-link {
-        position: relative;
-    }
-
-    &-link--1 {
         text-decoration: none;
-        @include fontstyle(400, 16px, 19px);
-        fill: ($colorMain + #010000 - #000a09);
-        color: ($colorMain + #010000 - #000a09);
         border: 1px solid ($colorMain + #0e0000 - #000315);
         padding: 13px 55px 9px 24px;
+        fill: ($colorMain + #010000 - #000a09);
         margin-top: 48px;
-
         display: flex;
         align-items: center;
         gap: 23px;
 
-        overflow: hidden;
-        transition: 0.6s;
-
-        &::after {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: $colorMain;
-            opacity: 0;
-
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.6s, opacity 0.6s;
-        }
-
-        &:hover:after {
-            transform: scaleX(1);
-            opacity: 1;
-        }
-
         &:hover {
-            // background: $colorMain;
+            background-color: $colorMain;
             fill: #ffffff;
-            color: #ffffff;
         }
-        // &:focus:after {
-        // 	transform: scaleX(100%);
-        // 	opacity: 1;
-        // }
-
-        // &:hover {
-        //     background-color: $colorMain;
-        //     fill: #ffffff;
-        //     color: #ffffff;
-        //     animation: order-link 0.4s cubic-bezier(0.39, 0.575, 0.565, 1) both;
-
-        // }
     }
 }
 
@@ -441,43 +361,15 @@ body {
     }
 
     &-link {
-        position: relative;
-    }
-
-    &-link--1 {
         text-decoration: none;
         @include fontstyle(400, 16px, 19px);
         color: ($colorMain + #010000 - #000a09);
         border: 1px solid ($colorMain + #0e0000 - #000315);
         padding: 15px 39px;
         margin-top: 48px;
-        overflow: hidden;
-        transition: color 0.7s;
-
-        &::after {
-            content: "";
-            position: absolute;
-            z-index: -1;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            background: $colorMain;
-            opacity: 0;
-
-            transform: scaleX(0);
-            transform-origin: center;
-            transition: transform 0.7s, opacity 0.7s;
-        }
-
-        &:hover:after {
-            // background-color: $colorMain;
-            // color: #ffffff;
-            transform: scaleX(1);
-            opacity: 1;
-        }
 
         &:hover {
+            background-color: $colorMain;
             color: #ffffff;
         }
     }
@@ -492,49 +384,6 @@ body {
     background-color: #f8f8f8;
     display: flex;
     flex-direction: column;
-    position: relative;
-
-    &-overlay {
-        position: absolute;
-        background: rgba(58, 56, 56, 0.86);
-        width: 100%;
-        height: 420px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        // display: none;
-        opacity: 0;
-        transition: opacity 0.4s ease-out 0s;
-    }
-
-    &:hover &-overlay {
-        // display: flex;
-        opacity: 1;
-        transition: opacity 0.8s ease-out 0.2s;
-    }
-
-    &-btn {
-        position: absolute; /* для карточки с видео */
-        z-index: 1; /* для карточки с видео */
-        background-color: transparent;
-        border: 1px solid #fff;
-        font-family: "Lato", sans-serif;
-        @include fontstyle(400, 14px, 17px);
-        fill: #fff;
-        color: #fff;
-        padding: 10px 15px 7px 13px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        gap: 11px;
-        transition: $timeTransLink;
-
-        &:hover {
-            border: 1px solid $colorMain;
-            fill: $colorMain;
-            color: $colorMain;
-        }
-    }
 
     &-video {
         height: 420px;
@@ -554,7 +403,6 @@ body {
     &-link {
         text-decoration: none;
         color: #000000;
-        transition: color 0.4s;
 
         &:hover {
             color: $colorMain;
@@ -607,17 +455,10 @@ body {
     &-link {
         text-decoration: none;
         color: inherit;
-        transition: $timeTransLink;
-    }
-    &-link--arrow:hover {
-        color: ($colorMain - #02120f);
     }
 
     &-link--active {
         color: ($colorMain - #02120f);
-    }
-    &-link--hov:hover {
-        color: #000;
     }
 }
 
