@@ -155,7 +155,7 @@ body {
     }
 
     &-column {
-        width: 360px;
+        min-width: 360px;
     }
 
     & svg {
@@ -223,6 +223,15 @@ body {
 
     &[open] .filter-title {
         color: #f16d7e;
+        fill: #f16d7e;
+    }
+
+    &-big {
+        display: none;
+        fill: #000;
+    }
+
+    &[open] .filter-big {
         fill: #f16d7e;
     }
 
@@ -749,6 +758,10 @@ body {
         &-list {
             justify-content: flex-end;
         }
+
+        &-overlay {
+            width: 63px;
+        }
     }
 
     .product-wrapper {
@@ -798,7 +811,7 @@ body {
     .sorting {
         &-wrapper {
             gap: 16px;
-            // justify-content: space-between;
+            margin-bottom: 32px;
         }
     }
 
@@ -877,8 +890,58 @@ body {
         width: 374px;
     }
 
-    .sorting-name {
-        font-size: 10px;
+    // ДОбАВИЛ
+    .sorting {
+        &-wrapper {
+            gap: 0;
+            flex-wrap: nowrap;
+        }
+
+        &-column {
+            min-height: 38px;
+        }
+
+        &-column-width1 {
+            min-width: 60px; // ширина 1 контейнера
+            display: flex;
+            align-items: center;
+        }
+
+        &-column-width2 {
+            min-width: 300px; // ширина 2 контейнера
+            line-height: 25px;
+        }
+
+        &-name {
+            font-size: 10px;
+        }
+
+        &-overlay {
+            width: 51px;
+        }
+    }
+
+    .filter {
+        &[open] {
+            box-shadow: none;
+        }
+
+        &-overlay {
+            top: 30px;
+            width: 360px;
+        }
+        &-small {
+            display: none;
+        }
+
+        &-big {
+            // line-height: 50px;
+            display: flex;
+        }
+
+        &-title {
+            background: none;
+        }
     }
 
     .promo-wrapper {
